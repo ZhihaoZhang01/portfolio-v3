@@ -8,7 +8,7 @@ export const personalData = {
   name: "Zhihao Zhang",
   siteTitle: "Home",
   initials: "ZZ",
-  url: "https://your-domain.com",
+  url: "https://zhihao-zhang.com",
   location: "Fairfax, VA",
   locationLink: "https://www.google.com/maps/place/George+Mason+University",
   description:
@@ -61,8 +61,12 @@ export const contactData = {
   emails: [
     { display: "zzhang34 AT gmu DOT edu", mailto: "zzhang34@gmu.edu" },
   ] as const,
-  /** Inbox for the contact form (Resend `to`). */
-  formInboxEmail: "zzhang34@gmu.edu",
+  /**
+   * Resend `to` for the contact form.
+   * With default `onboarding@resend.dev`, Resend only delivers to your account email.
+   * After verifying a domain at resend.com/domains and setting RESEND_FROM on Vercel, you can switch this back to zzhang34@gmu.edu.
+   */
+  formInboxEmail: "zhihaozhang321@gmail.com",
   tel: "",
   social: {
     GoogleScholar: {

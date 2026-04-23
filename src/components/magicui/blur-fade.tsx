@@ -31,10 +31,17 @@ const BlurFade = ({
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true });
   const isInView = !inView || inViewResult;
-  const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
-  };
+  const noBlur = Number.parseFloat(String(blur)) === 0;
+  // Avoid `filter` entirely when not needed — even blur(0) can make photos look soft in some browsers.
+  const defaultVariants: Variants = noBlur
+    ? {
+        hidden: { y: yOffset, opacity: 0 },
+        visible: { y: -yOffset, opacity: 1 },
+      }
+    : {
+        hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
+        visible: { y: -yOffset, opacity: 1, filter: "blur(0px)" },
+      };
   const combinedVariants = variant || defaultVariants;
   return (
     <AnimatePresence>
